@@ -21,8 +21,11 @@ func main() {
 
 	db, err := CreateDbConnection()
 	if err != nil {
-		log.Fatal("Error on db connection")
+		log.Fatal("Error on db connection", err)
 	}
+	// TODO think about this
+	db.createTable()
+
 	server := NewApiServer(":"+PORT, db)
 	server.Run()
 }
